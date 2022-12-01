@@ -4,14 +4,14 @@ DROP TABLE IF EXISTS films;
 
 CREATE TABLE films (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR NOT NULL,
+  title VARCHAR NOT NULL,
   director VARCHAR NOT NULL, 
   genre VARCHAR NOT NULL,
   year INT NOT NULL
 );
 
 INSERT INTO
-films (name, director, genre, year) 
+films (title, director, genre, year) 
 VALUES 
 ('There Will Be Blood', 'Paul Thomas Anderson', 'Period Drama', 2007),
 ('A Clockwork Orange', 'Stanley Kubrick', 'Dystopian Crime', 1971),
