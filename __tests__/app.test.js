@@ -103,6 +103,14 @@ describe('films routes', () => {
     });
   });
 
+  it('PUT /films/:id should update an existing film', async () => {
+    const resp = await request(app).put('/films/6').send({
+      genre: 'Garbage',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.genre).toBe('Garbage');
+  });
+
   afterAll(() => {
     pool.end();
   });
