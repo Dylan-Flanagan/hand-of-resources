@@ -7,6 +7,7 @@ describe('films routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
   it('GET /films should return a list of films', async () => {
     const resp = await request(app).get('/films');
     expect(resp.status).toBe(200);
@@ -64,7 +65,20 @@ describe('films routes', () => {
       ]
     `);
   });
-});
-afterAll(() => {
-  pool.end();
+
+  it('GET /films:id should return a films detail', async () => {
+    const resp = await request(app).get('/films/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "director": "Paul Thomas Anderson",
+        "genre": "Period Drama",
+        "id": "1",
+        "year": 2007,
+      }
+    `);
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
