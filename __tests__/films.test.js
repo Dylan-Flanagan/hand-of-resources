@@ -111,6 +111,14 @@ describe('films routes', () => {
     expect(resp.body.genre).toBe('Garbage');
   });
 
+  it('DELETE /films/:id should delete a film', async () => {
+    const resp = await request(app).delete('/films/1');
+    expect(resp.status).toBe(200);
+
+    const filmResp = await request(app).get('/films/1');
+    expect(filmResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
