@@ -100,4 +100,12 @@ describe('albums routes', () => {
       ...newAlbum,
     });
   });
+
+  it('PUT /albums/:id should update an existing album', async () => {
+    const resp = await request(app).put('/albums/8').send({
+      genre: 'Irish guy on acid',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.genre).toBe('Irish guy on acid');
+  });
 });
