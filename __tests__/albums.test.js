@@ -86,4 +86,18 @@ describe('albums routes', () => {
       }
     `);
   });
+  it('POST /albums should create a new album', async () => {
+    const newAlbum = {
+      title: 'Todays Active Lifestyles',
+      artist: 'Polvo',
+      genre: 'Experimental Rock',
+      year: 1993,
+    };
+    const resp = await await request(app).post('/albums').send(newAlbum);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newAlbum,
+    });
+  });
 });
