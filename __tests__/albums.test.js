@@ -73,6 +73,7 @@ describe('albums routes', () => {
       ]
     `);
   });
+
   it('GET /albums:id should return an albums detail', async () => {
     const resp = await request(app).get('/albums/1');
     expect(resp.status).toBe(200);
@@ -86,6 +87,7 @@ describe('albums routes', () => {
       }
     `);
   });
+
   it('POST /albums should create a new album', async () => {
     const newAlbum = {
       title: 'Todays Active Lifestyles',
@@ -107,5 +109,17 @@ describe('albums routes', () => {
     });
     expect(resp.status).toBe(200);
     expect(resp.body.genre).toBe('Irish guy on acid');
+  });
+
+  it('DELETE /albums/:id should delete an album', async () => {
+    const resp = await request(app).delete('/albums/1');
+    expect(resp.status).toBe(200);
+
+    const albumResp = await request(app).get('/albums/1');
+    expect(albumResp.status).toBe(404);
+  });
+
+  afterAll(() => {
+    pool.end();
   });
 });
