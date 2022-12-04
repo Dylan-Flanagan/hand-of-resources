@@ -95,7 +95,7 @@ describe('films routes', () => {
       genre: 'Action Comedy',
       year: 2009,
     };
-    const resp = await await request(app).post('/films').send(newFilm);
+    const resp = await request(app).post('/films').send(newFilm);
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
