@@ -93,7 +93,7 @@ describe('albums routes', () => {
       genre: 'Experimental Rock',
       year: 1993,
     };
-    const resp = await await request(app).post('/albums').send(newAlbum);
+    const resp = await request(app).post('/albums').send(newAlbum);
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: expect.any(String),
