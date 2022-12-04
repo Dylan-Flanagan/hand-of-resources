@@ -73,4 +73,17 @@ describe('albums routes', () => {
       ]
     `);
   });
+  it('GET /albums:id should return an albums detail', async () => {
+    const resp = await request(app).get('/albums/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "artist": "Thinking Fellers Union Local 282",
+        "genre": "Art Rock",
+        "id": "1",
+        "title": "Strangers from the Universe",
+        "year": 1994,
+      }
+    `);
+  });
 });
