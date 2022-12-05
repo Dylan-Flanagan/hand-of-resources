@@ -42,6 +42,19 @@ describe('videos routes', () => {
     `);
   });
 
+  it('GET /videos :id should return a video detail', async () => {
+    const resp = await request(app).get('/videos/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "team": "Alien Workshop",
+        "title": "Mind Field",
+        "year": 2009,
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
