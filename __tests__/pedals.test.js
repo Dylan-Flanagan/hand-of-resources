@@ -38,6 +38,18 @@ describe('pedals routes', () => {
     `);
   });
 
+  it('GET /pedals:id should return a pedals detail', async () => {
+    const resp = await request(app).get('/pedals/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "maker": "Keeley",
+        "name": "Loomer",
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
