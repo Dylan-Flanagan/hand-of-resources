@@ -69,6 +69,14 @@ describe('videos routes', () => {
     });
   });
 
+  it('PUT /videos/:id should update an existing video', async () => {
+    const resp = await request(app).put('/videos/4').send({
+      title: 'Cherry - A Skate Video',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.title).toBe('Cherry - A Skate Video');
+  });
+
   afterAll(() => {
     pool.end();
   });
