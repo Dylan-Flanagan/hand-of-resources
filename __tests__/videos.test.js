@@ -77,6 +77,14 @@ describe('videos routes', () => {
     expect(resp.body.title).toBe('Cherry - A Skate Video');
   });
 
+  it('DELETE /videos/:id should delete a video', async () => {
+    const resp = await request(app).delete('/videos/1');
+    expect(resp.status).toBe(200);
+
+    const videoResp = await request(app).get('/videos/1');
+    expect(videoResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
