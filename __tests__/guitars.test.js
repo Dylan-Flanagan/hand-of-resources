@@ -50,6 +50,19 @@ describe('guitars routes', () => {
     `);
   });
 
+  it('POST /guitars should create a new guitar', async () => {
+    const newGuitar = {
+      name: 'SG-2C',
+      maker: 'Yamaha',
+    };
+    const resp = await request(app).post('/guitars').send(newGuitar);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newGuitar,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
