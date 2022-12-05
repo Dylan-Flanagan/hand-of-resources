@@ -71,6 +71,14 @@ describe('pedals routes', () => {
     expect(resp.body.maker).toBe('Waza Craft');
   });
 
+  it('DELETE /pedals/:id should delete a pedal', async () => {
+    const resp = await request(app).delete('/pedals/1');
+    expect(resp.status).toBe(200);
+
+    const pedalResp = await request(app).get('/pedals/1');
+    expect(pedalResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
