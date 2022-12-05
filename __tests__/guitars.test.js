@@ -71,6 +71,14 @@ describe('guitars routes', () => {
     expect(resp.body.name).toBe('SG-7A');
   });
 
+  it('DELETE /guitars/:id should delete a guitar', async () => {
+    const resp = await request(app).delete('/guitars/1');
+    expect(resp.status).toBe(200);
+
+    const guitarResp = await request(app).get('/guitars/1');
+    expect(guitarResp.status).toBe(404);
+  });
+
   afterAll(() => {
     pool.end();
   });
