@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS pedals; 
+DROP TABLE IF EXISTS guitars;
 
 CREATE TABLE films (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -59,3 +60,17 @@ VALUES
 ('Russian Pickle', 'Way Huge'),
 ('MS-50G', 'Zoom'),
 ('Blues Driver', 'Boss');
+
+CREATE TABLE guitars (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  maker VARCHAR NOT NULL
+);
+
+INSERT INTO
+guitars (name, maker)
+VALUES 
+('Jazzmaster', 'Fender'),
+('Firebird', 'Gibson'),
+('Silhouette', 'Harmony'),
+('SG-2A', 'Yamaha');
