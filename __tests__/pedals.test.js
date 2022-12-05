@@ -63,6 +63,14 @@ describe('pedals routes', () => {
     });
   });
 
+  it('PUT /pedals/:id should update an existing pedal', async () => {
+    const resp = await request(app).put('/pedals/4').send({
+      maker: 'Waza Craft',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.maker).toBe('Waza Craft');
+  });
+
   afterAll(() => {
     pool.end();
   });
