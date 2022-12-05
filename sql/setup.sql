@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS pedals; 
 DROP TABLE IF EXISTS guitars;
+DROP TABLE IF EXISTS videos;
 
 CREATE TABLE films (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -74,3 +75,18 @@ VALUES
 ('Firebird', 'Gibson'),
 ('Silhouette', 'Harmony'),
 ('SG-2A', 'Yamaha');
+
+CREATE TABLE videos (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR NOT NULL,
+  team VARCHAR NOT NULL,
+  year INT NOT NULL
+);
+
+INSERT INTO
+videos (title, team, year)
+VALUES 
+('Mind Field', 'Alien Workshop', 2009),
+('Photosynthesis', 'Alien Workshop', 2000),
+('A Time to Shine', 'Transworld', 2006),
+('Cherry', 'Supreme', 2014);
