@@ -55,6 +55,20 @@ describe('videos routes', () => {
     `);
   });
 
+  it('POST /videos should create a new video', async () => {
+    const newVideo = {
+      title: 'I Like It Here Inside My Mind, Dont Wake Me This Time',
+      team: 'Polar Skate Co.',
+      year: 2016,
+    };
+    const resp = await request(app).post('/videos').send(newVideo);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newVideo,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
