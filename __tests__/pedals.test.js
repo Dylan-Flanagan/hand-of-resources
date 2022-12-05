@@ -50,6 +50,19 @@ describe('pedals routes', () => {
     `);
   });
 
+  it('POST /pedals should create a new pedal', async () => {
+    const newPedal = {
+      name: 'TB-2W',
+      maker: 'Boss',
+    };
+    const resp = await request(app).post('/pedals').send(newPedal);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPedal,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
