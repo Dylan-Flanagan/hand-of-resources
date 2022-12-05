@@ -38,6 +38,18 @@ describe('guitars routes', () => {
     `);
   });
 
+  it('GET /guitars:id should return a guitars detail', async () => {
+    const resp = await request(app).get('/guitars/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toMatchInlineSnapshot(`
+      Object {
+        "id": "1",
+        "maker": "Fender",
+        "name": "Jazzmaster",
+      }
+    `);
+  });
+
   afterAll(() => {
     pool.end();
   });
