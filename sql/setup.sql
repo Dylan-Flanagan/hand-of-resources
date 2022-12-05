@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db
 DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS pedals; 
 
 CREATE TABLE films (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -31,6 +32,7 @@ CREATE TABLE albums (
   year INT NOT NULL
 );
 
+
 INSERT INTO
 albums (title, artist, genre, year) 
 VALUES 
@@ -42,3 +44,18 @@ VALUES
 ('Isnt Anything', 'My Bloody Valentine', 'Shoegaze', 1988),
 ('Building Nothing Out of Something', 'Modest Mouse', 'Rock', 2000),
 ('Richard D. James Album', 'Aphex Twin', 'Electronic', 1996);
+
+
+CREATE TABLE pedals (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  maker VARCHAR NOT NULL
+);
+
+INSERT INTO
+pedals (name, maker)
+VALUES 
+('Loomer', 'Keeley'),
+('Russian Pickle', 'Way Huge'),
+('MS-50G', 'Zoom'),
+('Blues Driver', 'Boss');
