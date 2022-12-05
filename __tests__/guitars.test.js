@@ -63,6 +63,14 @@ describe('guitars routes', () => {
     });
   });
 
+  it('PUT /guitars/:id should update an existing guitar', async () => {
+    const resp = await request(app).put('/guitars/4').send({
+      name: 'SG-7A',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('SG-7A');
+  });
+
   afterAll(() => {
     pool.end();
   });
